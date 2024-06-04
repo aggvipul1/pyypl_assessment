@@ -4,7 +4,8 @@ appId: ${PACKAGE_ID}
 - assertVisible:
     id: "${output.landingPage.pyyplIcon}"
 
-- assertVisible: "Enter the pyypl universe"
+- assertVisible: 
+    text: "Enter the pyypl universe"
 
 - assertVisible: "Join pyypl and enable yor financial freedom directly from your pocket. Manage all your finances in one place, safe and secure in no time."
 

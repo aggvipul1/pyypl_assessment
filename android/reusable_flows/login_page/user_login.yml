@@ -19,7 +19,7 @@ appId: ${PACKAGE_ID}
 
 - assertVisible: "Phone number"
 
-- assertVisible: "${output.userDetails.countryDetails.phoneCountryCode} ${output.appConstants.countryDetails.phonePrefixCode}"
+- assertVisible: "${output.userDetails.countryDetails.phoneCountryCode} ${output.userDetails.countryDetails.phonePrefixCode}"
 
 - assertVisible: "Country code"
 
@@ -36,7 +36,7 @@ appId: ${PACKAGE_ID}
 
 - extendedWaitUntil:
     notVisible: 
-        id: "${output.loginScreen.phoneNumberTextbox}"
+        id: "${output.loginPage.phoneNumberTextbox}"
     timeout: 90000
 
 - runFlow:

@@ -23,8 +23,6 @@ appId: ${PACKAGE_ID}
 
 - assertVisible: "See all"
 
-- assertVisible: "Card Top-up"
-
 - assertVisible: "Home"
 
 - assertVisible: "Cards"

@@ -6,17 +6,17 @@ appId: ${PACKAGE_ID}
 - assertVisible: "Cash top-up"
 
 - assertVisible:
-    id: "${output.toupPage.menuIcon}"
+    id: "${output.topupPage.menuIcon}"
     index: 2
 
 - assertVisible: "Debit Card"
 
 - assertVisible:
-    id: "${output.toupPage.menuIcon}"
+    id: "${output.topupPage.menuIcon}"
     index: 2
 
 - assertVisible: "Wire Transfer"
 
 - assertVisible:
-    id: "${output.toupPage.menuIcon}"
+    id: "${output.topupPage.menuIcon}"
     index: 3

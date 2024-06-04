@@ -1,9 +1,0 @@
-{
-    "name": "pyypl_assessment_ui",
-    "version": "1.0.0",
-    "description": "android automation",
-    "scripts": {
-      "execute:flow": "maestro test -e PACKAGE_ID=com.pyypl.dev -e COUNTRY=uae android/specs/"
-
-    }
-  }

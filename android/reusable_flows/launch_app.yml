@@ -1,0 +1,6 @@
+appId: ${PACKAGE_ID}
+---
+- launchApp:
+    appId: ${PACKAGE_ID}
+    stopApp: true
+    clearState: true
