@@ -1,0 +1,32 @@
+appId: ${PACKAGE_ID}
+---
+
+- extendedWaitUntil:
+    visible: 
+        id: "${output.homePage.profileIcon}"
+    timeout: 90000
+
+- assertVisible:
+    id: "${output.homePage.qrCodeIcon}"
+
+- assertVisible:
+    id: "${output.homePage.notificationsIcon}"
+
+- assertVisible:
+    id: "${output.homePage.helpIcon}"
+
+- assertVisible: "Top up"
+
+- assertVisible: "Send"
+
+- assertVisible: "Transactions"
+
+- assertVisible: "See all"
+
+- assertVisible: "Card Top-up"
+
+- assertVisible: "Home"
+
+- assertVisible: "Cards"
+
+- assertVisible: "Rewards"

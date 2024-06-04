@@ -1,0 +1,15 @@
+appId: ${PACKAGE_ID}
+---
+
+- assertVisible: "Resend Code.*"
+
+- evalScript: ${output.counter = 0}
+- repeat:
+    while:
+      true: ${output.counter < 6}
+    commands:
+      - tapOn: 
+          id: '${output.loginPage.otpTextBox}'
+          index: ${output.counter}
+      - inputText: '1'
+      - evalScript: ${output.counter = output.counter + 1}

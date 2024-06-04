@@ -1,0 +1,54 @@
+appId: ${PACKAGE_ID}
+---
+
+- tapOn: "Debit Card"
+
+- copyTextFrom: 
+    id: ${output.topupPage.debitCardPage.balanceAmount}
+
+- runScript:
+    file: '../../util/fetch_numeric_val.js'
+    env: 
+      COPIED_VALUE: ${maestro.copiedText}
+
+- evalScript: ${output.balanceBeforeTopup = output.fetchNumericVal.fetchNumericVal}
+
+- tapOn: 
+    id: ${output.topupPage.debitCardPage.amountTextBox}
+
+- inputText: ${TOP_UP_AMOUNT}
+ 
+
+- copyTextFrom: 
+    id: '${output.topupPage.debitCardPage.totalAmount}'
+
+- runScript:
+    file: '../../util/fetch_numeric_val.js'
+    env: 
+      COPIED_VALUE: ${maestro.copiedText}
+
+- evalScript: ${output.totalPayAmount = output.fetchNumericVal.fetchNumericVal}
+
+- tapOn: 
+    id: ${output.topupPage.debitPage.topUpButton}
+
+- extendedWaitUntil:
+    visible: "Processing"
+    timeout: 90000
+
+- assertVisible: "Your transaction is being processed. This might take a few seconds. We will send a notification when it’s done, but you can also check your wallet balance or transaction history."
+
+- tapOn: "Close"
+
+- evalScript: ${output.balanceAfterTopup = Number(output.balanceBeforeTopup)  + Number(TOP_UP_AMOUNT) }
+
+- runScript:
+    file: '../../util/format_amount_val.js'
+    env: 
+      AMOUNT: ${output.balanceAfterTopup}
+
+- evalScript: ${output.expectedBalanceAfterTopup = output.userDetails.countryDetails.currencyCode + ' ' + output.formatAmountVal.formatAmountVal}
+
+- extendedWaitUntil:
+    visible: ${output.expectedBalanceAfterTopup}
+    timeout: 90000

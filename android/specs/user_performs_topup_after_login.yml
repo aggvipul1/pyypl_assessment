@@ -1,0 +1,21 @@
+appId: ${PACKAGE_ID}
+name: 'USER PERFORMS TOPUP AFTER LOGIN'
+jsEngine: graaljs
+---
+- runFlow: "../../locators/load_elements.yml"
+
+- runFlow: "../../reusable_flows/landing_page/validate_landing_page.yml"
+
+- runFlow:
+    file: "../../reusable_flows/login_page/user_login.yml"
+
+- runFlow:
+    file: "../../reusable_flows/home_page/validate_home_page.yml"
+
+- tapOn: "Top up"
+
+- runFlow: "../../reusable_flows/top_up_options_page/validate_top_up_options.yml"
+
+- runFlow: "../../reusable_flows/top_up_options_page/debit_card_top_up.yml"
+    env:
+      TOP_UP_AMOUNT: 30

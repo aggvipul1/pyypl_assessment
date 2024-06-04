@@ -1,0 +1,6 @@
+appId: ${PACKAGE_ID}
+---
+- runScript: landing_page.js
+- runScript: login_page.js
+- runScript: home_page.js
+- runScript: top_up_page.js

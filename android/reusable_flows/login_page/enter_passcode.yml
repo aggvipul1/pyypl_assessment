@@ -1,0 +1,18 @@
+appId: ${PACKAGE_ID}
+---
+
+- assertVisible: "Personal passcode"
+
+- assertVisible: "Forgot your passcode?"
+
+- evalScript: ${output.passcodeCounter = 1}
+- repeat:
+    while:
+      true: ${output.passcodeCounter < 5}
+    commands:
+      - tapOn: 1
+      - evalScript: ${output.passcodeCounter = output.passcodeCounter + 1}
+
+- extendedWaitUntil:
+    notVisible: "Verifying..."
+    timeout: 90000

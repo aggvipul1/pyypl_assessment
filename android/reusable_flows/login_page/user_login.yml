@@ -1,0 +1,50 @@
+appId: ${PACKAGE_ID}
+---
+
+- runScript: "../../test_data/user_data.js"
+
+- tapOn: "Log in"
+
+- extendedWaitUntil:
+    visible: "Please enter your mobile number"
+    timeout: 5000
+
+- assertVisible: "Login"
+
+- assertVisible:
+    id: "${output.loginPage.backButton}"
+
+- assertVisible:
+    id: "${output.loginPage.closeNavButton}"
+
+- assertVisible: "Phone number"
+
+- assertVisible: "${output.userDetails.countryDetails.phoneCountryCode} ${output.appConstants.countryDetails.phonePrefixCode}"
+
+- assertVisible: "Country code"
+
+- assertVisible:
+    id: "${output.loginPage.countryFlag}"
+    index: 3
+
+- tapOn:
+    id: "${output.loginPage.phoneNumberTextbox}"
+
+- inputText: "${output.userDetails.userData.phoneNumber}"
+
+- tapOn: "Next"
+
+- extendedWaitUntil:
+    notVisible: 
+        id: "${output.loginScreen.phoneNumberTextbox}"
+    timeout: 90000
+
+- runFlow:
+    when: 
+      visible: "Verify OTP"
+    file: "enter_otp.yml"
+
+- runFlow:
+    when: 
+      visible: "Enter Passcode"
+    file: "enter_passcode.yml"
